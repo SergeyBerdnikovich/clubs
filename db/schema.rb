@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130407124035) do
+ActiveRecord::Schema.define(:version => 20130407124143) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(:version => 20130407124035) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "categories_galleries", :force => true do |t|
+    t.integer  "category_id"
+    t.integer  "gallery_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "categories_galleries", ["category_id"], :name => "index_categories_galleries_on_category_id"
+  add_index "categories_galleries", ["gallery_id"], :name => "index_categories_galleries_on_gallery_id"
 
   create_table "comments", :force => true do |t|
     t.text     "body"
