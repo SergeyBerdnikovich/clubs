@@ -4,7 +4,8 @@ Clubs::Application.routes.draw do
 
   mount Ckeditor::Engine => '/ckeditor'
 
-root :to => 'static_pages#index'
+  root :to => 'static_pages#index'
+
   devise_for :users
   ActiveAdmin.routes(self)
 
@@ -13,6 +14,8 @@ root :to => 'static_pages#index'
   resources :galleries
   resources :articles
   resources :categories
+  resources :roles
+  resources :comments
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
