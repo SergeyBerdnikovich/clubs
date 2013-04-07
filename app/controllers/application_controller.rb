@@ -10,4 +10,12 @@ class ApplicationController < ActionController::Base
   def init_layout
     @galleries = Gallery.last(6)
   end
+
+  def authenticate_admin_user!
+    authenticate_user!
+    unless current_user.role && current_user.role.title == 'admin'
+      flash[:alert] = "Unauthorized Access!"
+      redirect_to root_path
+    end
+  end
 end
