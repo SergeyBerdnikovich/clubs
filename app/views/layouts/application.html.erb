@@ -1,14 +1,56 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <title>Clubs</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
-</body>
+<div class="main">
+  <div class="header">
+    <div class="header_resize">
+      <div class="logo">
+        <h1><a href="index.html">classiclink</a> <small>put your slogan here</small></h1>
+      </div>
+      <div class="menu_nav">
+        <%= render 'layouts/head_menu' %>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+        <% if alert.present? %>
+          <p class="alert"><%= alert %></p>
+        <% end %>
+        <%= yield %>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+  <div class="fbg">
+    <div class="fbg_resize">
+      <div class="col c1">
+        <%= render 'layouts/gallery' %>
+      </div>
+      <div class="col c2">
+        <%= render 'layouts/info' %>
+      </div>
+      <div class="col c3">
+        <%= render 'layouts/contacts' %>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer_resize">
+      <p class="lf">&copy; Copyright <a href="#">MyWebSite</a>.</p>
+      <p class="rf">Layout by Atomic <a href="http://dvporg.com/">Website Templates</a></p>
+      <div class="clr"></div>
+    </div>
+  </div>
+</div>
 </html>

@@ -1,0 +1,6 @@
+<h2><span>Image Gallery</span></h2>
+<% @galleries.each do |gallery| %>
+  <a href="#">
+    <img src="<%= gallery.image.url(:for_gallery) %>" width="58" height="58" alt="" />
+  </a>
+<% end %>

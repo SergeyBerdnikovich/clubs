@@ -1,0 +1,23 @@
+<ul>
+  <li id='head_menu_1'><a href="/">Home</a></li>
+  <li id='head_menu_2'><a href="/articles">Articles</a></li>
+  <li id='head_menu_3'><a href="/galleries">Galleries</a></li>
+  <li id='head_menu_4'><a href="/videos">Videos</a></li>
+  <li id='head_menu_5'><a href="/static_pages">Static Pages</a></li>
+  <li id='head_menu_6'>
+    <%= current_user ? link_to("Logout", destroy_user_session_path, :method => "DELETE") : link_to("Login", new_user_session_path) %>
+  </li>
+</ul>
+<script>
+  // $(".menu_nav ul li#head_menu_1").addClass('active');
+  $(".menu_nav ul li").click(function() {
+    $(".menu_nav ul li").each( function(index, obj) {
+      $(obj).removeClass('active');
+    });
+
+    var menu_id = $(this).attr("id");
+
+    $( '#' + menu_id ).addClass('active');
+
+  });
+</script>

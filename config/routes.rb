@@ -3,6 +3,12 @@ Clubs::Application.routes.draw do
 
   devise_for :users
 
+  resources :static_pages, :only => [:index, :show]
+  resources :videos
+  resources :galleries
+  resources :articles
+  resources :categories
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -52,7 +58,7 @@ Clubs::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+   root :to => 'static_pages#index'
 
   # See how all your routes lay out with "rake routes"
 
