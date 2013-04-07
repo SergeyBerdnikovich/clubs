@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130407123317) do
+ActiveRecord::Schema.define(:version => 20130407124035) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(:version => 20130407123317) do
   end
 
   add_index "articles", ["user_id"], :name => "index_articles_on_user_id"
+
+  create_table "articles_categories", :force => true do |t|
+    t.integer  "article_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "articles_categories", ["article_id"], :name => "index_articles_categories_on_article_id"
+  add_index "articles_categories", ["category_id"], :name => "index_articles_categories_on_category_id"
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -41,6 +51,15 @@ ActiveRecord::Schema.define(:version => 20130407123317) do
 
   add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "galleries", :force => true do |t|
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "title"
