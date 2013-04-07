@@ -1,4 +1,6 @@
 Clubs::Application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
+
   devise_for :users
 
   # The priority is based upon order of creation:
