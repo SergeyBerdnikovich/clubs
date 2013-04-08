@@ -1,14 +1,11 @@
 require 'sanitize/sanitize.rb'
 class Article < ActiveRecord::Base
-  attr_accessible :description, :full_text, :title
+  attr_accessible :description, :full_text, :title , :categories_attributes
 
   has_many :articles_categories
   has_many :categories, through: :articles_categories
   has_many :comments, as: :commentable
   belongs_to :user
-
-  accepts_nested_attributes_for :categories,
-                                :reject_if => :all_blank
 
   before_create :sanitize_input
 

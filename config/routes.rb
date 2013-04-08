@@ -16,6 +16,7 @@ Clubs::Application.routes.draw do
   resources :categories
   resources :roles
   resources :comments
+  resources :categorizations, :only => [:create]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
