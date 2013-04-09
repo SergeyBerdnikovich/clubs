@@ -38,7 +38,7 @@ class VideosController < ApplicationController
 
     respond_to do |format|
       if @video.save
-        @video.categories << Category.find(params[:category_id])
+        @video.categories << Category.find(params[:category_id]) if params[:category_id]
 
         format.html { redirect_to @video, notice: 'Video was successfully created.' }
         format.json { render action: 'show', status: :created, location: @video }

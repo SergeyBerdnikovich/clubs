@@ -7,9 +7,6 @@ class GalleriesController < ApplicationController
     @categories = Category.all
 
     unless params[:category].blank? || params[:category] == 'All'
-      #@galleries = Gallery.sort_by(params[:sort]).select do |gallery|
-      #  gallery.categories.include?(Category.find(params[:category]))
-      #end
       @galleries = Gallery.joins(:categories_galleries)
                           .where('categories_galleries.category_id' => params[:category])
                           .sort_by(params[:sort])
@@ -41,7 +38,7 @@ class GalleriesController < ApplicationController
 
     respond_to do |format|
       if @gallery.save
-        @gallery.categories << Category.find(params[:category_id])
+        @gallery.categories << Category.find(params[:category_id]) if params[:category_id]
 
         format.html { redirect_to @gallery, notice: 'Gallery was successfully created.' }
         format.json { render action: 'show', status: :created, location: @gallery }

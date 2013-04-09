@@ -6,11 +6,13 @@ class ArticlesController < ApplicationController
   def index
     @categories = Category.all
     unless params[:category].blank? || params[:category] == 'All'
-      @articles = Article.all.select do |article|
-        article.categories.include?(Category.find(params[:category]))
-      end
+      @articles = Article.joins(:articles_categories)
+                         .where('articles_categories.category_id' => params[:category])
+                         .sort_by(params[:sort])
+                         .page(params[:page])
+                         .per(params[:per])
     else
-      @articles = Article.all
+      @articles = Article.page(params[:page]).per(params[:per])
     end
   end
 
@@ -35,7 +37,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        @article.categories << Category.find(params[:category_id])
+        @article.categories << Category.find(params[:category_id]) if params[:category_id]
 
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
         format.json { render action: 'show', status: :created, location: @article }

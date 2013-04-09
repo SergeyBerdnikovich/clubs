@@ -38,7 +38,7 @@
 
 <!-- Pagination -->
 <div id="pagination">
-  <form action="/galleries" method="get" id="pagination_form">
+  <form action="/videos" method="get" id="pagination_form">
     <strong>(<%= @videos.count %>) Total Videos | Showing</strong>
     <select name="per" id="nb_item">
       <option value="6" <%= 'selected=selected' if params[:per] == '6' %>>6</option>

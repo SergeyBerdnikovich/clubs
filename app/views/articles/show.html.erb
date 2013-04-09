@@ -20,8 +20,17 @@
   <%== TunedSanitize::for_(@article.full_text) %>
 </p>
 
+<p>
+  <strong><%= 'Categories:' unless @article.categories.blank? %></strong>
+  <ul>
+    <% @article.categories.each do |category| %>
+      <li><%= category.name %></li>
+    <% end %>
+  </ul>
+</p>
 
 <%== show_share_buttons %>
 
 <%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?' } %>
 <%= link_to 'Back', articles_path %>
