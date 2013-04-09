@@ -1,0 +1,4 @@
+<h2><span>Links</span></h2>
+<% @static_pages_for_layou.each do |page| %>
+  <%= link_to page.title, static_page_path(page) %>
+<% end %>

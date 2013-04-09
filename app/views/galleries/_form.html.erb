@@ -1,0 +1,38 @@
+<%= form_for(@gallery) do |f| %>
+  <% if @gallery.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@gallery.errors.count, "error") %> prohibited this gallery from being saved:</h2>
+
+      <ul>
+      <% @gallery.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :image %><br />
+    <%= f.file_field :image %>
+  </div>
+  <% unless @gallery.id %>
+    <div class="field">
+      <%= label_tag 'Category' %>
+      <%= select_tag "category_id", options_from_collection_for_select(Category.all, "id", "name") %>
+    </div>
+  <% end %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<% if @gallery.id %>
+  <div id='categories'>
+    <%= render :partial => "articles/categories_show", :locals => { :obj => @gallery } %>
+  </div>
+  <%= form_tag(categorizations_path, :method => :post, :remote => true) do %>
+    <%= select_tag "categorization[category_id]", options_from_collection_for_select(Category.all, "id", "name") %>
+    <%= hidden_field_tag "categorization[gallery_id]", @gallery.id %>
+
+    <%= submit_tag 'Add Category' %>
+  <% end %>
+<% end %>

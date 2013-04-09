@@ -15,9 +15,7 @@ class Gallery < ActiveRecord::Base
   has_many :categories_galleries
   has_many :categories, through: :categories_galleries
   has_many :comments, as: :commentable
-
-  accepts_nested_attributes_for :categories,
-                                :reject_if => :all_blank
+  belongs_to :user
 
   paginates_per 6
 

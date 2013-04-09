@@ -8,7 +8,8 @@ class ApplicationController < ActionController::Base
   before_filter :init_layout
 
   def init_layout
-    @galleries = Gallery.last(6)
+    @galleries_for_layout = Gallery.last(6)
+    @static_pages_for_layou = StaticPage.all
   end
 
   def authenticate_admin_user!

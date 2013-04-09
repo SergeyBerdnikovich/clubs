@@ -3,8 +3,7 @@
   <li id='head_menu_2'><a href="/articles">Articles</a></li>
   <li id='head_menu_3'><a href="/galleries">Galleries</a></li>
   <li id='head_menu_4'><a href="/videos">Videos</a></li>
-  <li id='head_menu_5'><a href="/static_pages">Static Pages</a></li>
-  <li id='head_menu_6'>
+  <li id='head_menu_5'>
     <%= current_user ? link_to("Logout", destroy_user_session_path, :method => "DELETE") : link_to("Login", new_user_session_path) %>
   </li>
 </ul>

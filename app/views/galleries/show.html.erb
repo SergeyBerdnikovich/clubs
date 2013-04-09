@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <%= image_tag @gallery.image.url(:normal) %>
+</p>
+
+<p>
+  <strong>Image file name:</strong>
+  <%= @gallery.image_file_name %>
+</p>
+
+<p>
+  <strong>Image content type:</strong>
+  <%= @gallery.image_content_type %>
+</p>
+
+<p>
+  <strong>Image file size:</strong>
+  <%= @gallery.image_file_size %>
+</p>
+
+<%== show_share_buttons %>
+
+<%= link_to 'Edit', edit_gallery_path(@gallery) %> |
+<%= link_to 'Destroy', @gallery, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<%= link_to 'Back', galleries_path %>

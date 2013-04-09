@@ -7,6 +7,8 @@ ActiveAdmin.setup do |config|
   #
   config.site_title = "Clubs"
 
+  config.register_javascript 'ckeditor/init.js'
+
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
   #
