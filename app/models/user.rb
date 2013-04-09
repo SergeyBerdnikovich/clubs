@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
 
   before_create :assign_a_role
 
+  alias_attribute :name, :email
+
   def admin?
     self.role && self.role.title == 'admin'
   end

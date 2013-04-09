@@ -1,6 +1,7 @@
 require 'sanitize/sanitize.rb'
 class Article < ActiveRecord::Base
-  attr_accessible :description, :full_text, :title , :categories_attributes
+  attr_accessible :description, :full_text, :title,
+                  :user_id, :articles_categories_attributes
 
   has_many :articles_categories
   has_many :categories, through: :articles_categories
@@ -10,6 +11,8 @@ class Article < ActiveRecord::Base
   before_create :sanitize_input
 
   paginates_per 25
+
+  accepts_nested_attributes_for :articles_categories
 
   private
 

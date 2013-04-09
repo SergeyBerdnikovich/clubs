@@ -15,5 +15,6 @@ Clubs::Application.routes.draw do
   resources :categories, :only => [:show]
   resources :roles, :only => []
   resources :categorizations, :only => [:create]
+  resources :articles_categories, :only => [:destroy]
 
 end
