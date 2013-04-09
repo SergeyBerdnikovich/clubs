@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130409123158) do
+ActiveRecord::Schema.define(:version => 20130409124541) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -64,6 +64,16 @@ ActiveRecord::Schema.define(:version => 20130409123158) do
 
   add_index "categories_galleries", ["category_id"], :name => "index_categories_galleries_on_category_id"
   add_index "categories_galleries", ["gallery_id"], :name => "index_categories_galleries_on_gallery_id"
+
+  create_table "categories_videos", :force => true do |t|
+    t.integer  "category_id"
+    t.integer  "video_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "categories_videos", ["category_id"], :name => "index_categories_videos_on_category_id"
+  add_index "categories_videos", ["video_id"], :name => "index_categories_videos_on_video_id"
 
   create_table "ckeditor_assets", :force => true do |t|
     t.string   "data_file_name",                  :null => false

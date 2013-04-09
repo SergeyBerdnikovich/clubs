@@ -1,0 +1,38 @@
+<%= form_for(@video) do |f| %>
+  <% if @video.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@video.errors.count, "error") %> prohibited this video from being saved:</h2>
+
+      <ul>
+      <% @video.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :youtube_url %><br />
+    <%= f.text_field :youtube_url %>
+  </div>
+  <% unless @video.id %>
+    <div class="field">
+      <%= label_tag 'Category' %>
+      <%= select_tag "category_id", options_from_collection_for_select(Category.all, "id", "name") %>
+    </div>
+  <% end %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<% if @video.id %>
+  <div id='categories'>
+    <%= render :partial => "articles/categories_show", :locals => { :obj => @video } %>
+  </div>
+  <%= form_tag(categorizations_path, :method => :post, :remote => true) do %>
+    <%= select_tag "categorization[category_id]", options_from_collection_for_select(Category.all, "id", "name") %>
+    <%= hidden_field_tag "categorization[video_id]", @video.id %>
+
+    <%= submit_tag 'Add Category' %>
+  <% end %>
+<% end %>

@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
 
   has_many :articles
   has_many :galleries
+  has_many :videos
   belongs_to :role
 
   before_create :assign_a_role
