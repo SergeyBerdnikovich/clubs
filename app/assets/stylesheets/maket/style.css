@@ -372,3 +372,6 @@ div#pagination strong{
 div.filters {
 	padding-left: 5px;
 }
+div.mainbar {
+	word-wrap: break-word;
+}
