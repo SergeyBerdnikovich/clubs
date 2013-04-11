@@ -15,5 +15,5 @@
 /tmp
 
 /config/database.yml
-/paglic/images/*
-/paglic/ckeditor_assets/*
+/public/images/*
+/public/ckeditor_assets/*
