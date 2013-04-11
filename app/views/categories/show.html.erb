@@ -1,0 +1,6 @@
+<h4><%= @category.name %></h4> has next articles: <br />
+<ul>
+<% @category.articles.each do |article| %>
+  <li><%= link_to article.title, article_path(article) %></li>
+<% end %>
+</ul>
