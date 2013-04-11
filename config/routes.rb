@@ -9,6 +9,7 @@ Clubs::Application.routes.draw do
 
   resources :static_pages, :only => [:show]
   resources :videos
+  resources :users, :only => [:show]
   resources :galleries
   resources :articles
   resources :comments

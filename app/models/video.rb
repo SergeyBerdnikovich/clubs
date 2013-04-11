@@ -1,5 +1,5 @@
 class Video < ActiveRecord::Base
-  attr_accessible :youtube_url
+  attr_accessible :youtube_url, :description
 
   has_many :categories_videos
   has_many :categories, through: :categories_videos
@@ -20,5 +20,9 @@ class Video < ActiveRecord::Base
     end
 
     order("videos.#{sort_type} ASC")
+  end
+
+  def get_alt
+    self.categories.map { |category| category.name }.join(' ') + ' ' + self.description
   end
 end

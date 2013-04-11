@@ -1,12 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <%= image_tag @gallery.image.url(:normal) %>
+  <img src="<%= @gallery.image.url(:normal) %>" alt="<%= @gallery.get_alt %>" title='<%= @gallery.description %>'>
 </p>
 
 <p>
   <strong>Image file name:</strong>
   <%= @gallery.image_file_name %>
+</p>
+
+<p>
+  <strong>Image description:</strong>
+  <%= @gallery.description %>
 </p>
 
 <p>

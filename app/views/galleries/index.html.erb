@@ -33,7 +33,7 @@
       <div class="thumbnail">
         <div id="gallery">
           <a href=<%= gallery_path(gallery) %> title= <%= gallery.image_file_name %> class="thumbnail">
-            <%= image_tag gallery.image.url(:for_gallery) %>
+            <img src="<%= gallery.image.url(:for_gallery) %>" alt="<%= gallery.get_alt %>" title='<%= gallery.description %>'>
           </a>
         </div>
       <p align='right'>(<%= gallery.comments.size %>) Comments</p>

@@ -12,9 +12,14 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
     <%= f.label :image %><br />
     <%= f.file_field :image %>
   </div>
+
   <% unless @gallery.id %>
     <div class="field">
       <%= label_tag 'Category' %>

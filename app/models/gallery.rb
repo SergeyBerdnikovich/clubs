@@ -1,5 +1,5 @@
 class Gallery < ActiveRecord::Base
-  attr_accessible :image, :image_content_type, :image_file_name, :image_file_size
+  attr_accessible :image, :image_content_type, :image_file_name, :image_file_size, :description
 
   has_attached_file :image,
                     :styles => { :small => "50x50>",
@@ -31,5 +31,9 @@ class Gallery < ActiveRecord::Base
     end
 
     order("galleries.#{sort_type} ASC")
+  end
+
+  def get_alt
+    self.categories.map { |category| category.name }.join(' ') + ' ' + self.description
   end
 end
