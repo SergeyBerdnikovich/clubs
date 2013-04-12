@@ -3,7 +3,7 @@ body {
 	margin:0;
 	padding:0;
 	width:100%;
-	color:#000;
+	color:#333333;
 	font:normal 12px/1.8em Arial, Helvetica, sans-serif;
 	background:url(/assets/maket/main_bg.jpg) repeat-y center center;
 }
@@ -54,7 +54,10 @@ h2 {
 p {
 	margin:8px 0;
 	padding:0 0 8px 0;
-	font:normal 12px/1.8em Arial, Helvetica, sans-serif;
+	font-family: Arial,Helmet, Freesans,sans-serif;
+	font-size: 1.177em;
+	line-height: 16px;
+	color:#333333;
 }
 p.spec {
 	text-align:left;
