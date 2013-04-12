@@ -5,6 +5,15 @@
 </p>
 
 <p>
+  <strong><%= 'Categories:' unless @gallery.categories.blank? %></strong>
+  <ul>
+    <% @gallery.categories.each do |category| %>
+      <li><%= link_to category.name, category_path(category) %></li>
+    <% end %>
+  </ul>
+</p>
+
+<p>
   <strong>Image file name:</strong>
   <%= @gallery.image_file_name %>
 </p>
@@ -22,15 +31,6 @@
 <p>
   <strong>Image file size:</strong>
   <%= @gallery.image_file_size %>
-</p>
-
-<p>
-  <strong><%= 'Categories:' unless @gallery.categories.blank? %></strong>
-  <ul>
-    <% @gallery.categories.each do |category| %>
-      <li><%= link_to category.name, category_path(category) %></li>
-    <% end %>
-  </ul>
 </p>
 
 <%== show_share_buttons %>

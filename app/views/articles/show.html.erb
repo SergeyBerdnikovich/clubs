@@ -16,17 +16,17 @@
 </p>
 
 <p>
-  <strong>Full text:</strong>
-  <%== TunedSanitize::for_(@article.full_text) %>
-</p>
-
-<p>
   <strong><%= 'Categories:' unless @article.categories.blank? %></strong>
   <ul>
     <% @article.categories.each do |category| %>
       <li><%= link_to category.name, category_path(category) %></li>
     <% end %>
   </ul>
+</p>
+
+<p>
+  <strong>Full text:</strong>
+  <%== TunedSanitize::for_(@article.full_text) %>
 </p>
 
 <%== show_share_buttons %>
