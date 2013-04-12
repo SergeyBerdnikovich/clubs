@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   def init_layout
     @galleries_for_layout = Gallery.last(6)
     @static_pages_for_layou = StaticPage.all
+    @setting = Setting.first
   end
 
   def authenticate_admin_user!
