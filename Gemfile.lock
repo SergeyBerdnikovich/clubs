@@ -43,6 +43,7 @@ GEM
     arbre (1.0.1)
       activesupport (>= 3.0.0)
     arel (3.0.2)
+    babosa (0.3.9)
     bcrypt-ruby (3.0.1)
     bourbon (3.1.1)
       sass (>= 3.2.0)
@@ -74,6 +75,7 @@ GEM
     fastercsv (1.5.5)
     formtastic (2.2.1)
       actionpack (>= 3.0)
+    friendly_id (4.0.9)
     has_scope (0.5.1)
     hike (1.2.1)
     i18n (0.6.1)
@@ -168,10 +170,12 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin
+  babosa
   cancan
   ckeditor
   coffee-rails (~> 3.2.1)
   devise
+  friendly_id
   jquery-rails
   kaminari
   paperclip

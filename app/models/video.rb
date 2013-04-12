@@ -5,6 +5,9 @@ class Video < ActiveRecord::Base
   has_many :categories, through: :categories_videos
   belongs_to :user
 
+  extend FriendlyId
+  friendly_id :categories_and_title, use: :slugged
+
   def parse_youtube
     regex = /^(?:http:\/\/)?(?:www\.)?\w*\.\w*\/(?:watch\?v=)?((?:p\/)?[\w\-]+)/
     self.youtube_url.match(regex) ? self.youtube_url.match(regex)[1] : nil
@@ -24,5 +27,15 @@ class Video < ActiveRecord::Base
 
   def get_alt
     self.categories.map { |category| category.name }.join(' ') + ' ' + self.description
+  end
+
+  private
+
+  def categories_and_title
+    "#{categories.map {|cat| cat.name.to_slug.normalize! :transliterations => :russian}.join(' ')} - #{description.to_slug.normalize! :transliterations => :russian}"
+  end
+
+  def normalize_friendly_id(text)
+    text.to_slug.normalize! :transliterations => :russian
   end
 end

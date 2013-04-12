@@ -14,7 +14,18 @@ class Article < ActiveRecord::Base
 
   accepts_nested_attributes_for :articles_categories
 
+  extend FriendlyId
+  friendly_id :categories_and_title, use: :slugged
+
   private
+
+  def categories_and_title
+    "#{categories.map {|cat| cat.name.to_slug.normalize! :transliterations => :russian}.join(' ')} - #{title.to_slug.normalize! :transliterations => :russian}"
+  end
+
+  def normalize_friendly_id(text)
+    text.to_slug.normalize! :transliterations => :russian
+  end
 
   def sanitize_input
     self.full_text = TunedSanitize::for_(self.full_text)

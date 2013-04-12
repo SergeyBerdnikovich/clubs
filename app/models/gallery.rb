@@ -19,6 +19,9 @@ class Gallery < ActiveRecord::Base
 
   paginates_per 6
 
+  extend FriendlyId
+  friendly_id :categories_and_title, use: :slugged
+
   def self.sort_by(sort_type_params)
     if sort_type_params == 'Name'
       sort_type = 'image_file_name'
@@ -35,5 +38,15 @@ class Gallery < ActiveRecord::Base
 
   def get_alt
     self.categories.map { |category| category.name }.join(' ') + ' ' + self.description
+  end
+
+  private
+
+  def categories_and_title
+    "#{categories.map {|cat| cat.name.to_slug.normalize! :transliterations => :russian}.join(' ')} - #{description.to_slug.normalize! :transliterations => :russian}"
+  end
+
+  def normalize_friendly_id(text)
+    text.to_slug.normalize! :transliterations => :russian
   end
 end

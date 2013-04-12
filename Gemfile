@@ -14,6 +14,8 @@ gem "paperclip"
 gem 'sanitize'
 gem 'kaminari'
 gem 'activeadmin'
+gem "babosa"
+gem "friendly_id"
 
 # Gems used only for assets and not required
 # in production environments by default.
