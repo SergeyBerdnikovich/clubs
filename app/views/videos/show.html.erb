@@ -11,6 +11,15 @@
 </p>
 
 <p>
+  <strong><%= 'Categories:' unless @video.categories.blank? %></strong>
+  <ul>
+    <% @video.categories.each do |category| %>
+      <li><%= link_to category.name, category_path(category) %></li>
+    <% end %>
+  </ul>
+</p>
+
+<p>
   <strong>Video description:</strong>
   <%= @video.description %>
 </p>

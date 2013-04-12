@@ -1,4 +1,5 @@
 categories:
 <% obj.categories.each do |category| %>
-  <%= link_to "#{category.name}", category %>,
+  <%= link_to category.name, category %>
+  [<%= link_to 'X', categorization_path(obj, :delete => obj.class, :category_id => category.id), :method => :delete %>],
 <% end %>

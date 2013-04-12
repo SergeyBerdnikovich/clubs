@@ -35,10 +35,13 @@ class GalleriesController < ApplicationController
   # POST /galleries.json
   def create
     @gallery = current_user.galleries.new(params[:gallery])
+    params[:category] ? category_ids = params[:category][:id_check] : category_ids = []
 
     respond_to do |format|
       if @gallery.save
-        @gallery.categories << Category.find(params[:category_id]) if params[:category_id]
+        category_ids.each do |category_id|
+          @gallery.categories << Category.find(category_id)
+        end
 
         format.html { redirect_to @gallery, notice: 'Gallery was successfully created.' }
         format.json { render action: 'show', status: :created, location: @gallery }

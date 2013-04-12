@@ -22,7 +22,7 @@
   <% unless @article.id %>
     <div class="field">
       <%= label_tag 'Category' %>
-      <%= select_tag "category_id", options_from_collection_for_select(Category.all, "id", "name") %>
+      <%= render :partial => "categories_checkbox_show" %>
     </div>
   <% end %>
   <div class="field">

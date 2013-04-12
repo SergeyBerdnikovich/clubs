@@ -375,3 +375,17 @@ div.filters {
 div.mainbar {
 	word-wrap: break-word;
 }
+
+.categoryElementsHolder {
+  background: none repeat scroll 0 0 #FFFFFF;
+  border: 1px solid #ADADAD;
+  height: 85px;
+  overflow: auto;
+  padding: 5px 0;
+  width: 277px;
+}
+.optionsLine {
+  padding: 1px 0;
+  padding-left: 5px;
+  width: 258px;
+}

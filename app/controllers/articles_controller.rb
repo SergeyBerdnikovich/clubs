@@ -34,10 +34,13 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article = current_user.articles.new(params[:article])
+    params[:category] ? category_ids = params[:category][:id_check] : category_ids = []
 
     respond_to do |format|
       if @article.save
-        @article.categories << Category.find(params[:category_id]) if params[:category_id]
+        category_ids.each do |category_id|
+          @article.categories << Category.find(category_id)
+        end
 
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
         format.json { render action: 'show', status: :created, location: @article }

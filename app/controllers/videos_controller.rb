@@ -35,10 +35,13 @@ class VideosController < ApplicationController
   # POST /videos.json
   def create
     @video = current_user.videos.new(params[:video])
+    params[:category] ? category_ids = params[:category][:id_check] : category_ids = []
 
     respond_to do |format|
       if @video.save
-        @video.categories << Category.find(params[:category_id]) if params[:category_id]
+        category_ids.each do |category_id|
+          @video.categories << Category.find(category_id)
+        end
 
         format.html { redirect_to @video, notice: 'Video was successfully created.' }
         format.json { render action: 'show', status: :created, location: @video }

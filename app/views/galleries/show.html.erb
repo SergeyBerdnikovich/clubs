@@ -24,6 +24,15 @@
   <%= @gallery.image_file_size %>
 </p>
 
+<p>
+  <strong><%= 'Categories:' unless @gallery.categories.blank? %></strong>
+  <ul>
+    <% @gallery.categories.each do |category| %>
+      <li><%= link_to category.name, category_path(category) %></li>
+    <% end %>
+  </ul>
+</p>
+
 <%== show_share_buttons %>
 
 <%= link_to 'Edit', edit_gallery_path(@gallery) %> |

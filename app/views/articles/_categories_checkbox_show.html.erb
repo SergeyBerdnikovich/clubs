@@ -1,0 +1,8 @@
+<div class='categoryElementsHolder'>
+  <% Category.all.each do |category| %>
+    <div class='optionsLine'>
+      <%= check_box_tag 'category[id_check][]', category.id %>
+      <%= category.name %>
+    </div>
+  <% end %>
+</form>

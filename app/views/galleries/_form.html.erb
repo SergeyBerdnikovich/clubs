@@ -23,7 +23,7 @@
   <% unless @gallery.id %>
     <div class="field">
       <%= label_tag 'Category' %>
-      <%= select_tag "category_id", options_from_collection_for_select(Category.all, "id", "name") %>
+      <%= render :partial => "articles/categories_checkbox_show" %>
     </div>
   <% end %>
   <div class="actions">
