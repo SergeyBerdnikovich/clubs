@@ -1,5 +1,5 @@
 class Category < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :parent_id
 
   has_many :articles_categories
   has_many :articles, through: :articles_categories
