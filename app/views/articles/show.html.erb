@@ -1,3 +1,7 @@
+<head>
+  <title><%= @setting.try(:project_name) %> - <%= @article.try(:title) %> - <%= @article.try(:description)[0..100] %></title>
+</head>
+
 <p id="notice"><%= notice %></p>
 
 <p>
