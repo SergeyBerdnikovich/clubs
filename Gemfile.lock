@@ -109,6 +109,8 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.0)
       mime-types
+    paperclip-ffmpeg (0.10.2)
+      paperclip (>= 2.5.2)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
@@ -179,6 +181,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   paperclip
+  paperclip-ffmpeg
   rails (= 3.2.13)
   sanitize
   sass-rails (~> 3.2.3)

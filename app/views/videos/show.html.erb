@@ -1,18 +1,38 @@
 <head>
   <title><%= @setting.try(:project_name) %> - <%= @video.try(:description)[0..100] %></title>
+  <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
+  <script src="http://vjs.zencdn.net/c/video.js"></script>
 </head>
 
 <p id="notice"><%= notice %></p>
 
 <p>
-  <iframe width="360"
-          height="215"
-          src="http://www.youtube.com/embed/<%= @video.parse_youtube %>"
-          frameborder="0"
-          allowfullscreen
-          alt="<%= @video.get_alt %>"
-          title="<%= @video.description %>"></iframe>
+  <% if @video.youtube_url.blank? %>
+    <video id="my_video_1"
+           class="video-js vjs-default-skin"
+           controls preload="auto"
+           width="360"
+           height="215"
+           poster="<%= @video.attachment.url(:thumb) %>"
+           data-setup="{}">
+      <source src="<%= @video.attachment.url(:medium) %>" type='video/flv'>
+    </video>
+  <% else %>
+    <iframe width="360"
+            height="215"
+            src="http://www.youtube.com/embed/<%= @video.parse_youtube %>"
+            frameborder="0"
+            allowfullscreen
+            alt="<%= @video.get_alt %>"
+            title="<%= @video.description %>"></iframe>
+  <% end %>
 </p>
+
+
+
+
+
+
 
 <p>
   <strong><%= 'Categories:' unless @video.categories.blank? %></strong>

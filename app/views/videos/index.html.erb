@@ -1,5 +1,7 @@
 <head>
   <title><%= @setting.try(:project_name) %> - <%= @setting.try(:slogan) %></title>
+  <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
+  <script src="http://vjs.zencdn.net/c/video.js"></script>
 </head>
 <!-- Pagination -->
 <div id="pagination">
@@ -30,15 +32,27 @@
 </div>
 <!-- /Pagination -->
 <br />
-  <% @videos.each do |video| %>
+  <% @videos.each_with_index do |video, i| %>
     <div style='float:left; padding:1px;'>
-      <iframe width="200"
-        height="115"
-        src="http://www.youtube.com/embed/<%= video.parse_youtube %>"
-        frameborder="0"
-        allowfullscreen
-        alt="<%= video.get_alt %>"
-        title="<%= video.description %>"></iframe>
+      <% if video.youtube_url.blank? %>
+        <video id="my_video_<%= i+1 %>"
+               class="video-js vjs-default-skin"
+               controls preload="auto"
+               width="200"
+               height="115"
+               poster="<%= video.attachment.url(:thumb) %>"
+               data-setup="{}">
+          <source src="<%= video.attachment.url(:medium) %>" type='video/flv'>
+        </video>
+      <% else %>
+        <iframe width="200"
+                height="115"
+                src="http://www.youtube.com/embed/<%= video.parse_youtube %>"
+                frameborder="0"
+                allowfullscreen
+                alt="<%= video.get_alt %>"
+                title="<%= video.description %>"></iframe>
+      <% end %>
     </div>
   <% end %>
   <div style='clear:both'></div>

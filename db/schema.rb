@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130414091648) do
+ActiveRecord::Schema.define(:version => 20130422103358) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -162,11 +162,15 @@ ActiveRecord::Schema.define(:version => 20130414091648) do
 
   create_table "videos", :force => true do |t|
     t.string   "youtube_url"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
     t.integer  "user_id"
     t.string   "description"
     t.string   "slug"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
   end
 
   add_index "videos", ["slug"], :name => "index_videos_on_slug", :unique => true

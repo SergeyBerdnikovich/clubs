@@ -1,9 +1,17 @@
 class Video < ActiveRecord::Base
-  attr_accessible :youtube_url, :description
+  attr_accessible :youtube_url, :description, :attachment
 
   has_many :categories_videos
   has_many :categories, through: :categories_videos
   belongs_to :user
+
+  has_attached_file :attachment,
+                    :url  => "/videos/:id/:style/:basename.:extension",
+                    :path => ":rails_root/public/videos/:id/:style/:basename.:extension",
+                    :styles => { :medium => { :geometry => "640x480", :format => 'flv' },
+                                 :thumb => { :geometry => "100x100#", :format => 'jpg', :time => 10 }
+                    },
+                    :processors => [:ffmpeg]
 
   extend FriendlyId
   friendly_id :categories_and_title, use: :slugged

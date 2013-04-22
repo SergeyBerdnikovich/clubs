@@ -19,6 +19,10 @@
     <%= f.label :youtube_url %><br />
     <%= f.text_field :youtube_url %>
   </div>
+  <div class="field">
+    <%= f.label :attachment %><br />
+    <%= f.file_field :attachment %>
+  </div>
 
   <% unless @video.id %>
     <div class="field">
