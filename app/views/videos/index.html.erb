@@ -42,7 +42,7 @@
                height="115"
                poster="<%= video.attachment.url(:thumb) %>"
                data-setup="{}">
-          <source src="<%= video.attachment.url(:medium) %>" type='video/flv'>
+          <source src="<%= video.attachment.url(:flv_original) %>" type='video/flv'>
         </video>
       <% else %>
         <iframe width="200"
